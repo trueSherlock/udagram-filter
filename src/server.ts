@@ -39,7 +39,7 @@ import { log } from 'console';
       if(filteredPath){
         res.status(200).sendFile(filteredPath);
       }else{
-        res.status(422).send("image_url is invalid");
+        res.status(422).send("No valid image found at URL:"+url);
       }
     }else{
       res.status(400).send("image_url is required");
