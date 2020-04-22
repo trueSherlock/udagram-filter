@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
 import { log } from 'console';
 import { readdir } from 'fs';
+import { Request, Response } from 'express';
 
 (async () => {
 
@@ -30,7 +31,7 @@ import { readdir } from 'fs';
 
   /**************************************************************************** */
 
-  app.get("/filteredimage",async(req,res)=>{
+  app.get("/filteredimage",async(req: Request,res: Response)=>{
     var url:string = req.query.image_url;
     if(url){
       const filteredPath:string = await filterImageFromURL(url);
@@ -60,7 +61,7 @@ import { readdir } from 'fs';
   
   // Root Endpoint
   // Displays a simple message to the user
-  app.get( "/", async ( req, res ) => {
+  app.get( "/", async ( req:Request, res:Response ) => {
     res.send("try GET /filteredimage?image_url={{}}")
   } );
   
